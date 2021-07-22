@@ -8,7 +8,12 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <button onclick="update_user()" type="button">Update User</button>
+    <h3>User Id: <span id="userId"></span></h3>
+    <p>First time user? <%= ftu %></p>
+    <button onclick="update_user_id()" type="button">Update UserID</button>
+    <button onclick="delete_user_id()" type="button">Delete UserID</button>
   </body>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="javascripts/cookie_helper.js"></script>
   <script src="javascripts/test1.js"></script>
 </html>

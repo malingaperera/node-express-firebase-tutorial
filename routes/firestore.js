@@ -6,14 +6,14 @@
 const { Firestore } = require("@google-cloud/firestore");
 
 // GCloud deployment
-const db = new Firestore();
+// const db = new Firestore();
 
 // Local deployment
-// const db = new Firestore({
-//   projectId: "node-tutorial",
-//   keyFilename:
-//     "path_to_json.json",
-// });
+const db = new Firestore({
+  projectId: "node-tutorial-319303",
+  keyFilename:
+    "C:\\Malinga - Other\\Web Development\\Vanessa\\node-express-firebase-tutorial\\node-tutorial-319303-c26e5354f957.json"
+});
 
 const collection = "Users";
 

@@ -1,8 +1,30 @@
 var express = require("express");
+var auth = require("basic-auth");
 var router = express.Router();
 
 const db = require("./firestore");
 router.use(express.json());
+
+router.route("/").get(function (req, res, next) {
+  // We call firestore read, check firestore.js
+  var user = auth(req);
+  if (user && user.name === "admin" && user.pass === "admin") {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    // We call firestore list, check firestore.js
+    db.list(500)
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => next(err));
+  } else {
+    res
+      .set({
+        "WWW-Authenticate": 'Basic realm="simple-admin"'
+      })
+      .sendStatus(401);
+  }
+});
 
 /* GET users listing. */
 router
